@@ -32,7 +32,7 @@ function loadSingle() {
 
 /**
  * Reflect ER diagram in table definition
- * 
+ *
  * @param isAll
  */
 function syncUML(isAll) {
@@ -65,9 +65,8 @@ function syncUML(isAll) {
 /**
  * Synchronize the contents of the ER diagram to a spreadsheet
  *
- * @param activeSpreadsheet
  * @param activeSheet
- * @param fileName
+ * @param readERDiagramValues
  */
 function sync(activeSheet, readERDiagramValues) {
   const lastRow = activeSheet.getLastRow();
@@ -265,7 +264,7 @@ function readGoogleSpreadsheet(headersMain, headersSub, rowsData) {
 
 /**
  * Get one data group from a spreadsheet (ex: 1 table of data)
- * 
+ *
  * @param headersMain
  * @param headersSub
  * @param rowsData
@@ -293,7 +292,7 @@ function createParentAttribute(headersMain, headersSub, rowsData, rowNumber) {
 
 /**
  * A parent can have multiple child groups. Generate a group of one child
- * 
+ *
  * @param headersSub
  * @param rowsData
  * @param rowNumber
@@ -330,7 +329,7 @@ function createAttributeGroup(headersSub, rowsData, rowNumber, keyIndex) {
 
 /**
  * Get both values in the specified range and formulas
- * 
+ *
  * @param range
  * @return
  */
@@ -355,7 +354,7 @@ function getValuesAndFormulas(range) {
 
 /**
  * Generate a new sheet with default data
- * 
+ *
  * @param activeSpreadsheet
  * @param fileName
  * @return
@@ -443,7 +442,7 @@ function isAllEmpty(obj) {
 ////////////////////////////////////////////
 /**
  * Format the data read from the ER diagram
- * 
+ *
  * @param activeSpreadsheetName
  * @param contents
  * @return
@@ -508,7 +507,7 @@ function convertERDiagram(activeSpreadsheetName, contents) {
 
 /**
  * Get the database category (used to determine if it matches the title part of Spreadsheet)
- * 
+ *
  * @param content
  * @return
  */
@@ -520,7 +519,7 @@ function getDatabaseCategoryName(content) {
 
 /**
  * Get the connection name
- * 
+ *
  * @param content
  * @return
  */
@@ -532,7 +531,7 @@ function getConnectionName(content) {
 
 /**
  * Get table name and table details
- * 
+ *
  * @param content
  * @return
  */
@@ -548,7 +547,7 @@ function getTableName(content) {
 ////////////////////////////////////////////
 /**
  * Convert to camel case
- * 
+ *
  * @param text
  * @return
  */
@@ -564,7 +563,7 @@ function camelCase(text) {
 
 /**
  * Convert to snake case
- * 
+ *
  * @param text
  * @return
  */
@@ -581,7 +580,7 @@ function snakeCase(text) {
 
 /**
  * Convert to Pascal case
- * 
+ *
  * @param text
  * @return
  */
@@ -623,7 +622,7 @@ function deleteByTargetNumber(text, targetNumber) {
 
 /**
  * Replace the character string at the specified position
- * 
+ *
  * @param text
  * @param replace
  * @param targetNumber

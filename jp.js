@@ -32,7 +32,7 @@ function loadSingle() {
 
 /**
  * ER図をテーブル定義書に反映する
- * 
+ *
  * @param isAll すべてのファイルを対象とするかどうか
  */
 function syncUML(isAll) {
@@ -66,8 +66,7 @@ function syncUML(isAll) {
  * ER図の内容をスプレッドシートに同期する
  *
  * @param activeSpreadsheet 現在開いているGoogleSpreadsheet
- * @param activeSheet 現在アクティブとしているシート
- * @param fileName ER図のファイル名
+ * @param readERDiagramValues ER図から読み取ったデータ
  */
 function sync(activeSheet, readERDiagramValues) {
   const lastRow = activeSheet.getLastRow();
@@ -265,7 +264,7 @@ function readGoogleSpreadsheet(headersMain, headersSub, rowsData) {
 
 /**
  * スプレッドシートから1つ分のデータ群を取得する（ex:1テーブル分のデータ）
- * 
+ *
  * @param headersMain 親側のキー一覧
  * @param headersSub キー一覧
  * @param rowsData スプレッドシートの各行ごとのデータ
@@ -293,7 +292,7 @@ function createParentAttribute(headersMain, headersSub, rowsData, rowNumber) {
 
 /**
  * 親は複数の子グループを持つことができる。1つ分の子のグループを生成する
- * 
+ *
  * @param headersSub キー一覧
  * @param rowsData スプレッドシートの各行ごとのデータ
  * @param rowNumber 読み取り中の行番号
@@ -330,7 +329,7 @@ function createAttributeGroup(headersSub, rowsData, rowNumber, keyIndex) {
 
 /**
  * 指定範囲の値と数式の両方を取得する
- * 
+ *
  * @param range Spreadsheetの範囲指定
  * @return string[] 指定範囲のデータを取得したもの
  */
@@ -355,7 +354,7 @@ function getValuesAndFormulas(range) {
 
 /**
  * デフォルトデータを入れた新しいシートを生成する
- * 
+ *
  * @param activeSpreadsheet 現在開いているSpreadsheet
  * @param fileName umlファイルのファイル名
  * @return 作成したシートデータ
@@ -443,7 +442,7 @@ function isAllEmpty(obj) {
 ////////////////////////////////////////////
 /**
  * ER図から読み取ったデータを整形する
- * 
+ *
  * @param activeSpreadsheetName スプレッドシートのタイトル
  * @param contents ER図から読み取った内容
  * @return ER図の内容をテーブルごとに配列でまとめた情報
@@ -508,7 +507,7 @@ function convertERDiagram(activeSpreadsheetName, contents) {
 
 /**
  * データベースカテゴリを取得する（Spreadsheetのタイトル部分と一致しているかどうかの判定に使用する）
- * 
+ *
  * @param content ER図から読み取った内容
  * @return データベースカテゴリ名
  */
@@ -520,7 +519,7 @@ function getDatabaseCategoryName(content) {
 
 /**
  * コネクション名を取得する
- * 
+ *
  * @param content ER図から読み取った内容
  * @return コネクション名
  */
@@ -532,7 +531,7 @@ function getConnectionName(content) {
 
 /**
  * テーブル名、テーブル詳細を取得する
- * 
+ *
  * @param content ER図から読み取った内容
  * @return [テーブル名、テーブル詳細]
  */
@@ -548,7 +547,7 @@ function getTableName(content) {
 ////////////////////////////////////////////
 /**
  * キャメルケースへ変換
- * 
+ *
  * @param text 対象文字列
  * @return 変換後の文字列
  */
@@ -564,7 +563,7 @@ function camelCase(text) {
 
 /**
  * スネークケースへ変換
- * 
+ *
  * @param text 対象文字列
  * @return 変換後の文字列
  */
@@ -581,7 +580,7 @@ function snakeCase(text) {
 
 /**
  * パスカルケースへ変換
- * 
+ *
  * @param text 対象文字列
  * @return 変換後の文字列
  */
@@ -623,7 +622,7 @@ function deleteByTargetNumber(text, targetNumber) {
 
 /**
  * 指定位置の文字列を置換する
- * 
+ *
  * @param text 置換前の文字列
  * @param replace 置換文字
  * @param targetNumber 置換したい位置
