@@ -1,6 +1,5 @@
 const driveFolderId = "**************************";
 const separationKey = "ColumnName";
-const groupKey = "";
 
 ////////////////////////////////////////////
 // Menu Method
@@ -279,19 +278,14 @@ function createParentAttribute(headersMain, headersSub, rowsData, rowNumber) {
   }
 
   while (rowsData[rowNumber] !== undefined && !isAllEmpty(rowsData[rowNumber])) {
-    if (groupKey !== "") {
-      let groupKeyName = rowsData[rowNumber][groupKey];
-      [rowNumber, parentAttribute[groupKeyName]] = createAttributeGroup(headersSub, rowsData, rowNumber, 1);
-    } else {
-      [rowNumber, parentAttribute["attributes"]] = createAttributeGroup(headersSub, rowsData, rowNumber, 0);
-    }
+    [rowNumber, parentAttribute["attributes"]] = createAttributeGroup(headersSub, rowsData, rowNumber, 0);
   }
 
   return [rowNumber, parentAttribute];
 }
 
 /**
- * 親は複数の子グループを持つことができる。1つ分の子のグループを生成する
+ * 親は複数行の子グループを持つことができる。1つ分の子のグループを生成する
  *
  * @param headersSub キー一覧
  * @param rowsData スプレッドシートの各行ごとのデータ
@@ -316,10 +310,6 @@ function createAttributeGroup(headersSub, rowsData, rowNumber, keyIndex) {
     rowNumber++;
 
     if (!rowsData[rowNumber] || isAllEmpty(rowsData[rowNumber])) {
-      break;
-    }
-
-    if (groupKey != "" && rowsData[rowNumber][headersSub[0]] != "" && rowsData[rowNumber][headersSub[0]] != beforeKeyValue) {
       break;
     }
   }
