@@ -15,7 +15,7 @@ Read ER diagram and output table definition to Google Spreadsheet
    The only difference between en.js and jp.js is the comment part. Please paste either one.
 2. Follow the sample description method below and create an ER diagram with UML
 3. Enter the path of Google Drive where UML is saved in the **** part of the source code
-4. Match the title name of Google Spreadsheet to the content described in UML.  
+4. Reads the one that matches the ○ part of <<★★★★, ○○○○>> and the title in Spreadsheet.  
    In the case of the example, please use the title name "User".
 5. You can output the contents of UML by executing Script
 
