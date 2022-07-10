@@ -1,0 +1,40 @@
+@startuml
+
+'Hide division ruled lines
+hide empty members
+
+'Definition of mark and background color
+!define master_data_db #E2EFDA-C6E0B4
+!define user_db #FCE4D6-F8CBAD
+!define MASTER_DATA AAFFAA
+!define User FFAA00
+
+'Define setting color
+skinparam class {
+    BorderColor Black
+    ArrowColor Black
+}
+
+package "user" as user {
+    entity "accounts [AccountsTable]" as accounts <<U, User>> user_db {
+        + id : bigInteger [ID]
+        # user_id : bigInteger  [UserID]
+    }
+
+    entity "users [UsersTable]" as users <<U, User>> user_db {
+        + id : bigInteger [ID]
+        name : string [UserName]
+    }
+
+    entity "country_names [Country name]" as country_names <<M, MASTER_DATA>> master_data_db {
+        + id : integer [ID]
+        name : string [Name]
+    }
+}
+
+'Define relationship diagram
+users        ||-up-||     accounts
+
+'memo
+note right of country_names : comment
+@enduml
