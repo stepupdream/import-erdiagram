@@ -351,17 +351,21 @@ function getValuesAndFormulas(range) {
  */
 function createNewSheet(activeSpreadsheet, fileName) {
   const sheet = activeSpreadsheet.insertSheet(pascalCase(fileName));
+  sheet.getRange(1, 1, 1, 11).activate();
+  sheet.getActiveRangeList().setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID);
 
-  sheet.getRange(1, 1, 1, 9).setBackgroundRGB(182, 215, 168);
+  sheet.getRange(1, 1, 1, 11).setBackgroundRGB(182, 215, 168);
   sheet.getRange(1, 1).setValue('TableName');
   sheet.getRange(1, 2).setValue('TableDescription');
   sheet.getRange(1, 3).setValue('ConnectionName');
   sheet.getRange(1, 4).setValue('ColumnName');
   sheet.getRange(1, 5).setValue('ColumnDescription');
   sheet.getRange(1, 6).setValue('DataType');
-  sheet.getRange(1, 7).setValue('IsNullable');
-  sheet.getRange(1, 8).setValue('IsUnsigned');
-  sheet.getRange(1, 9).setValue('Comment');
+  sheet.getRange(1, 7).setValue('MigrationDataType');
+  sheet.getRange(1, 8).setValue('IsNullable');
+  sheet.getRange(1, 9).setValue('IsUnsigned');
+  sheet.getRange(1, 10).setValue('Version');
+  sheet.getRange(1, 11).setValue('Comment');
 
   return sheet;
 }
@@ -464,9 +468,9 @@ function convertERDiagram(activeSpreadsheetName, contents) {
       attributes = {};
       while (!contents[rowIndex].match(/}/)) {
         // -がついているものはnull許容カラムであるとする
-        let isNullable = 'TRUE';
+        let isNullable = 'FALSE';
         if (contents[rowIndex].match(/\-/)) {
-          isNullable = 'FALSE';
+          isNullable = 'TRUE';
         }
         // 正規表現で不要な記号を削除し、カラム情報を抽出する
         // ex1) + id : bigInteger [ID]
